@@ -1,6 +1,6 @@
 <template>
  <div class="horizontal-card" @mousemove="getMousePosition">
-     <slot :mousePositionX="mouseX"></slot>
+     <slot :mousePositionX="mouseX" :mousePositionY="mouseY" :isHover="hovering"></slot>
     </div>
 </template>
 

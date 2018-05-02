@@ -1,17 +1,26 @@
 <template>
   <div ref="parallaxSection" id="app" >
     <parallax-container>
-       <parallaxElement class="text-container" :parallaxStrength="-10" :mousePX='setMouseX' :mousePY='setMouseY' :isHover="hovering">
+      <template slot-scope="props">
+        <parallaxElement
+        class="text-container"
+        :mousePX="props.mousePositionX"
+        :mousePY="props.mousePositionY"
+        :isHover="props.isHover"
+        :parallaxStrength="-10">
           <h1>MouseParallax</h1>
-          <template scope="props">{{props.mousePositionX}}</template>
-          
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius, omnis atque. Dolore rerum, doloremque nulla animi neque repellat ad voluptatem cumque cum laudantium aut illo illum placeat nihil inventore ipsa.</p>
         </parallaxElement>
-        <parallaxElement class="background-image" :parallaxStrength="-30" :mousePX='setMouseX' :mousePY='setMouseY' :isHover="hovering">
-         
+
+        <parallaxElement
+        class="background-image"
+        :mousePX="props.mousePositionX"
+        :mousePY="props.mousePositionY"
+        :isHover="props.isHover"
+        :parallaxStrength="-30">
         </parallaxElement>
+      </template>
     </parallax-container>
-    <parallax-container></parallax-container>
   </div>
 </template>
 
