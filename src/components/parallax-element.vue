@@ -5,8 +5,10 @@
 </template>
 
 <script>
+import { eventBus } from '../main'
+
 export default {
-    props: ['parallaxStrength', 'mousePX', 'mousePY', 'isHover'],
+    props: ['parallaxStrength', 'isHover', 'type'],
     mounted(){
     this.width = this.$refs.parallaxSection.offsetWidth;
     this.height = this.$refs.parallaxSection.offsetHeight;
@@ -27,29 +29,38 @@ export default {
   },
   computed: {
       transformParallax(){
-          this.mouseX = parseInt(this.mousePX)
-          this.mouseY = parseInt(this.mousePY)
           let relX = this.mouseX - this.offsetX
           let relY = this.mouseY - this.offsetY
-          console.log(relY)
           this.movementX = (relX - this.width/2) / this.width * this.parallaxStrength
           this.movementY = (relY - this.height/2) / this.height * this.parallaxStrength
           if(this.isHover === false) {
               return
           }
-          else {
+          else if(this.type === 'translation') {
             return {
                 transform: `translateX(${this.movementX}px) translateY(${this.movementY}px)`
             }
           }
+          else if(this.type === 'rotation') {
+            return {
+                transform: `rotateX(${this.movementY/100}rad) rotateY(${this.movementX/100}rad)`
+            }
+          }
       }
   },
+  created() {
+      eventBus.$on('mousePositionChanged', (data) => {
+          this.mouseX = data.mouseXB
+          this.mouseY = data.mouseYB
+      })
+  }
 }
 </script>
 
 <style lang="scss" scoped>
     .parallax-element {
-      transition: all 2s;
-      transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+        transform-origin: center;
+        transition: all 2s;
+        transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
     }
 </style>
