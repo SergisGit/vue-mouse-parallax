@@ -16,14 +16,6 @@ export default {
       hovering: false
     }
   },
-  computed: {
-    setMouseX() {
-      return this.mouseX
-    },
-    setMouseY() {
-      return this.mouseY
-    }
-  },
   methods: {
      getMousePosition: _.throttle(function(e) {
       this.hovering = true
