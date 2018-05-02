@@ -1,11 +1,27 @@
 <template>
   <div id="app" >
-    <parallaxContainer></parallaxContainer>
+    <parallaxContainer class="horizontal-card">
+        <parallaxElement class="text-container" :parallaxStrength="-40" :parallaxType="'translation'">
+            <h1>MouseParallax</h1>
+             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius, omnis atque. Dolore rerum, doloremque nulla animi neque repellat ad voluptatem cumque cum laudantium aut illo illum placeat nihil inventore ipsa.</p>
+        </parallaxElement>
+        <parallaxElement class="background-image" :parallaxStrength="-30" :parallaxType="'translation'">
+        </parallaxElement>
+    </parallaxContainer>
+    <parallaxContainer class="horizontal-card">
+        <parallaxElement class="text-container" :parallaxStrength="-40" :parallaxType="'rotation'">
+            <h1>MouseParallax</h1>
+             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius, omnis atque. Dolore rerum, doloremque nulla animi neque repellat ad voluptatem cumque cum laudantium aut illo illum placeat nihil inventore ipsa.</p>
+        </parallaxElement>
+        <parallaxElement class="background-image" :parallaxStrength="-30" :parallaxType="'rotation'">
+        </parallaxElement>
+    </parallaxContainer>
   </div>
 </template>
 
 <script>
 import parallaxContainer from "./components/parallax-container.vue"
+import parallaxElement from "./components/parallax-element.vue"
 
 export default {
   data() {
@@ -15,7 +31,7 @@ export default {
     }
   },
     components: {
-        parallaxContainer
+        parallaxContainer, parallaxElement
     }
 }
 </script>

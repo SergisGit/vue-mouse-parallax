@@ -1,12 +1,15 @@
 <template>
-  <div ref="parallaxSection" class="parallax-element" :style="transformParallax">
+  <div ref="parallaxSection" @mousemove="getMousePositionY" class="parallax-element" :style="transformParallax">
       <slot></slot>
+      {{mousePosition}}
   </div>
 </template>
 
 <script>
+import {eventBus} from '../main.js'
+import throttle from "../js/throttle"
 export default {
-    props: ['parallaxStrength'],
+    props: ['parallaxStrength', 'parallaxType', 'mouseX', 'mouseY','mousePosition', 'mousePP'],
     mounted(){
         this.width = this.$refs.parallaxSection.offsetWidth;
         this.height = this.$refs.parallaxSection.offsetHeight;
@@ -20,20 +23,43 @@ export default {
         offsetX: 0,
         offsetY: 0,
         movementX: 0,
-        movementY: 0
+        movementY: 0,
+        mouseXP: 0,
+        mouseYP: 0
     }
   },
   computed: {
     transformParallax(){
-        let relX = this.$root.$data.mouseX - this.offsetX
-        let relY = this.$root.$data.mouseY - this.offsetY
+        let relX = this.mousePosition - this.offsetX
+        let relY = this.mouseYP - this.offsetY
         this.movementX = (relX - this.width/2) / this.width * this.parallaxStrength
         this.movementY = (relY - this.height/2) / this.height * this.parallaxStrength
-        return {
-            transform: `translateX(${this.movementX}px) translateY(${this.movementY}px)`
+
+        if(this.parallaxType === 'translation'){
+            return {
+                transform: `translateX(${this.movementX}px) translateY(${this.movementY}px)`
+            }
+        }
+
+        if(this.parallaxType === 'rotation'){
+            return {
+                transform: `rotateX(${this.movementY}deg) rotateY(${this.movementX}deg)`
+            }
         }
       }
   },
+    methods: {
+        getMousePositionY: throttle(function(e) {
+            this.mouseXP = e.pageX
+            this.mouseYP = e.pageY
+            eventBus.$emit('positionChanged', this.mouseXP)
+        }, 100)
+  },
+  created() {
+      eventBus.$on('positionChanged', (data) => {
+          this.mousePosition = data
+      })
+  }
 }
 </script>
 
