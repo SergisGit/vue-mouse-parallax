@@ -1,6 +1,9 @@
 <template>
- <div class="parallax-container" @mousemove="getMousePosition" @mouseout="parallaxStop" @mouseover="parallaxStart">
-     <slot></slot>
+    <div class="parallax-container" 
+    @mousemove="getMousePosition" 
+    @mouseleave.stop="parallaxStop" 
+    @mouseover="parallaxStart">
+        <slot></slot>
     </div>
 </template>
 
@@ -19,13 +22,12 @@ export default {
 
   methods: {
     getMousePosition: throttle(function(e) {
-      const children = this.$children.map(child => {
-        if (child.$options.propsData.parallaxStrength != 0) {
-          this.hovering = true;
+      this.$children.forEach(child => {
+        if (child.$options.propsData.parallaxStrength != 0) { 
+          this.mouseX = e.clientX;
+          this.mouseY = e.clientY;
         }
       });
-      this.mouseX = e.clientX;
-      this.mouseY = e.clientY;
       if (this.hovering === false) {
         return;
       }
@@ -33,18 +35,18 @@ export default {
 
     parallaxStart() {
       this.hovering = true;
-      const children = this.$children.map(child => {
+      this.$children.forEach(child => {
         child.isHovering = true;
       });
     },
 
     parallaxStop() {
       this.hovering = false;
-      const children = this.$children.map(child => {
+      this.$children.forEach(child => {
         child.isHovering = false;
       });
     }
-  },
+  }
 };
 </script>
 

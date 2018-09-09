@@ -82,14 +82,13 @@ export default {
         };
       }
     }
-  },
-  created() {
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .parallax-element {
+  min-height: 300px;
   transform-origin: center;
   transition: all 2s;
   transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
