@@ -1,7 +1,7 @@
 <template>
     <div class="parallax-container" 
     @mousemove="getMousePosition" 
-    @mouseleave.stop="parallaxStop" 
+    @mouseleave="parallaxStop" 
     @mouseover="parallaxStart">
         <slot></slot>
     </div>
@@ -16,7 +16,8 @@ export default {
     return {
       mouseX: 0,
       mouseY: 0,
-      hovering: false
+      hovering: false,
+      counter: 0
     };
   },
 
@@ -31,7 +32,7 @@ export default {
       if (this.hovering === false) {
         return;
       }
-    }, 100),
+    }, 0),
 
     parallaxStart() {
       this.hovering = true;

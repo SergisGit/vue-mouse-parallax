@@ -7,6 +7,7 @@
 <script>
 
 import getPosition from '../js/getPosition'
+import throttle from "../js/throttle"
 
 export default {
   props: ["parallaxStrength", "isHover", "type"],
@@ -36,7 +37,7 @@ export default {
       let mouseX = this.$parent.mouseX;
       let mouseY = this.$parent.mouseY;
       if (this.isHovering === false) {
-        return;
+        return; //return empty translation instead
       } else if (this.type === "translation") {
         let relX = mouseX - getPosition(this.$refs.parallaxSection).x;
         let relY = mouseY - getPosition(this.$refs.parallaxSection).y;

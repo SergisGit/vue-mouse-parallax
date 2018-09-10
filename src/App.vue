@@ -8,6 +8,19 @@
 			<a href="https://github.com/Aminerman/vuejs-mouse-parallax" target="_blank">
 			<img src="./assets/img/github-logo.svg" alt=""> Download
 			</a>
+			<h2>Installation</h2>
+      <pre v-highlightjs><code class="shellsession">
+        npm i vue-mouse-parallax
+      </code></pre>
+
+      <h2>Import</h2>
+      <pre v-highlightjs><code class="javascript">
+        import Vue from 'vue'
+        import VueMouseParallax from 'vue-mouse-parallax'
+ 
+        Vue.use(VueMouseParallax)
+      </code></pre>
+
 			<h2>How to use</h2>
 			<p>In order for the effect to work, the <span class="html-tag">&lt;parallax-element /&gt;</span>  should be contained within  <span class="html-tag">&lt;parallax-container /&gt;</span> </p>
 			<p>Options can then be passed to <span class="html-tag">&lt;parallax-element /&gt;</span> like so :</p>
@@ -25,14 +38,23 @@
     <parallax-container class="horizontal-card centered-card">
 				<parallax-element
 					class="text-container"
-					:parallaxStrength="10"
+					:parallaxStrength="30"
 					:type="'depth'"
 					>
 					<h2>'depth'</h2>
+          <parallax-container>
+            <parallax-element
+					class="text-container"
+					:parallaxStrength="100"
+					:type="'translation'"
+					>
+					<h2>'Deep'</h2>
+          </parallax-element>
+          </parallax-container >
 				</parallax-element>
 				<parallax-element
 					class="background-image"
-					:parallaxStrength="-10"
+					:parallaxStrength="-30"
 					:type="'depth'"
 					>
 				</parallax-element>
