@@ -1,4 +1,4 @@
-# vue-mouse-parallax
+# vue-hover-sf-parallax (vue-mouse-parallax fork)
 
 [![npm](https://img.shields.io/npm/v/vue-mouse-parallax.svg) ![npm](https://img.shields.io/npm/dm/vue-mouse-parallax.svg)](https://www.npmjs.com/package/vue-mouse-parallax)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
@@ -13,7 +13,7 @@ An easy to use Mouse Parallax Component - Made with Vue.js
 # Installation
 
 ```
-npm install --save vue-mouse-parallax
+npm install --save vue-hover-sf-parallax
 ```
 
 ## Default import
@@ -22,16 +22,16 @@ Install all the components:
 
 ```javascript
 import Vue from 'vue'
-import VueMouseParallax from 'vue-mouse-parallax'
+import VueHoverParallax from 'vue-hover-sf-parallax'
 
-Vue.use(VueMouseParallax)
+Vue.use(VueHoverParallax)
 ```
 
 Use specific components:
 
 ```javascript
 import Vue from 'vue'
-import { ParallaxContainer, ParallaxElement } from 'vue-mouse-parallax'
+import { ParallaxContainer, ParallaxElement } from 'vue-hover-sf-parallax'
 
 Vue.component('parallax-container', ParallaxContainer)
 Vue.component('parallax-element', ParallaxElement)
@@ -42,10 +42,10 @@ Vue.component('parallax-element', ParallaxElement)
 ## Browser
 
 ```html
-<link rel="stylesheet" href="vue-mouse-parallax/dist/vue-mouse-parallax.css"/>
+<link rel="stylesheet" href="vue-hover-sf-parallax/dist/vue-mouse-parallax.css"/>
 
 <script src="vue.js"></script>
-<script src="vue-mouse-parallax/dist/vue-mouse-parallax.browser.js"></script>
+<script src="vue-hover-sf-parallax/dist/vue-mouse-parallax.browser.js"></script>
 ```
 
 

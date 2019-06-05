@@ -1,9 +1,9 @@
 {
-  "name": "vue-hover-parallax",
-  "version": "1.0.0",
-  "description": "Vue.js component for hover parallax effect",
+  "name": "vue-hover-sf-parallax",
+  "version": "1.0.2",
+  "description": "Vue.js component for hover parallax effect (s3rg1s fork)",
   "author": "Amine Bouyarmane <amine.bouyarmane@gmail.com>",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
